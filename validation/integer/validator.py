@@ -1,11 +1,11 @@
-from validation.params import ValidationParams
+from validation.integer.params import IntegerValidationParams
 
 
 class IntegerValidator:
-    def __init__(self, params: ValidationParams):
+    def __init__(self, params: IntegerValidationParams):
         self.params = params
 
-    def start(self, inp: str):
+    def validate(self, inp: str):
         for i in range(len(inp)):
             if inp[i] == self.params.space:
                 continue
@@ -15,6 +15,8 @@ class IntegerValidator:
                 return self.__num(inp[i + 1:])
 
             return self.__err('symbol ' + inp[i] + ' not a number or sign')
+
+        self.__err('empty input')
 
     def __sign(self, inp: str):
         for i in range(len(inp)):
@@ -29,7 +31,7 @@ class IntegerValidator:
         for i in range(len(inp)):
             if inp[i] in self.params.numbers:
                 continue
-            if inp[i] == self.params.enter:
+            elif inp[i] == self.params.enter:
                 return self.__end()
             return self.__err('symbol ' + inp[i] + ' not a number')
 

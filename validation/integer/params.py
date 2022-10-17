@@ -1,4 +1,4 @@
-class ValidationParams:
+class IntegerValidationParams:
 
     def __init__(self, space: str, signs: [str], numbers: [str], enter: str):
         self.space = space
