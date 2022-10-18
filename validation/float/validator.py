@@ -36,7 +36,7 @@ class FloatValidator:
         for i in range(len(inp)):
             if inp[i] not in self.params.numbers:
                 return self.__err('not number after sign')
-            self.number = self.number * 10 + (-int(inp[i]) if self.negative else int(inp[i]))
+            self.__calculate_left(int(inp[i]))
             return self.__left_num(inp[i + 1:])
 
     def __err(self, reason: str):
